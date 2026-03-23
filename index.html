@@ -15,8 +15,6 @@
         <!--/metatextblock-->
         <meta name="format-detection" content="telephone=no" />
         <meta http-equiv="x-dns-prefetch-control" content="on" />
-        <!-- Fonts -->
-        <link rel="stylesheet" href="assets/css/fonts.css" type="text/css" />
         <!-- Favicons -->
         <link
             rel="icon"
@@ -67,6 +65,8 @@
             media="all"
             onerror="this.loaderr = 'y'"
         />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&subset=latin,cyrillic" rel="stylesheet" />
         <link
             rel="stylesheet"
             href="assets/css/tilda-animation-2.0.min.css"
@@ -110,6 +110,7 @@
         <noscript
             ><link rel="stylesheet" href="assets/css/tilda-zoom-2.0.min.css" type="text/css" media="all"
         /></noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700" type="text/css" />
         <script nomodule src="assets/js/tilda-polyfill-1.0.min.js" charset="utf-8"></script>
         <script type="text/javascript">
             function t_onReady(func) {
@@ -192,7 +193,7 @@
             if (navigator.userAgent.indexOf("Android") !== -1) {
                 var l = document.createElement("link");
                 l.rel = "stylesheet";
-                l.href = "assets/img/fonts-arial_2.css";
+                l.href = "assets/css/fonts-arial_2.css";
                 l.media = "all";
                 document.getElementsByTagName("head")[0].appendChild(l);
             }
