@@ -51,7 +51,7 @@
 
 @font-face {
   font-family: "Korataki";
-  src: url("_fonts/15651.otf") format("opentype");
+  src: local("Korataki"), local("Korataki Regular");
   font-display: swap;
 }
 
@@ -1674,15 +1674,17 @@ img {
 
 
 .footer-nav {
-  height: 100px;
+  height: 180px;
   background: #000000;
 }
 
 .footer-nav-shell {
   position: relative;
   width: min(100%, var(--section-shell));
-  height: 100px;
+  height: 180px;
   margin: 0 auto;
+  padding-top: 66px;
+  box-sizing: border-box;
 }
 
 .footer-brand {
@@ -1784,6 +1786,7 @@ img {
   width: min(100%, var(--section-shell));
   min-height: 127px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .requisites-col {
@@ -2697,14 +2700,15 @@ img {
 
 
   .footer-nav {
-    height: 343px;
+    height: 392px;
     background: #000000;
   }
 
   .footer-nav-shell {
     width: 320px;
-    height: 343px;
-    padding-top: 20px;
+    height: 392px;
+    padding-top: 50px;
+    box-sizing: border-box;
   }
 
   .footer-brand {
@@ -2714,7 +2718,7 @@ img {
 
   .footer-menu {
     position: absolute;
-    top: 79px;
+    top: 117px;
     left: 0;
     right: auto;
     bottom: auto;
@@ -2739,19 +2743,19 @@ img {
   }
 
   .footer-contact {
-    top: 292px;
+    top: 274px;
     left: 0;
     width: 320px;
   }
 
 
   .requisites {
-    min-height: 413px;
+    min-height: 345px;
   }
 
   .requisites-shell {
     width: 320px;
-    min-height: 413px;
+    min-height: 345px;
   }
 
   .requisites-col {
