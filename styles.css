@@ -25,7 +25,7 @@
   --hero-card-w-mobile: 155px;
   --hero-card-h-mobile: 136px;
 
-  --stats-h-desktop: 771px;
+  --stats-h-desktop: 360px;
   --stats-h-mobile: 891px;
   --projects-h-desktop: 856px;
   --projects-h-mobile: 2036px;
@@ -272,7 +272,7 @@ img {
   align-items: flex-start;
   gap: 14px;
   width: var(--hero-card-w);
-  height: var(--hero-card-h);
+  min-height: var(--hero-card-h);
   border-radius: var(--radius-card);
   background-size: cover;
   background-position: center;
@@ -286,8 +286,8 @@ img {
 }
 
 .hero__card-text {
-  width: 100%;
   margin: 0;
+  width: 100%;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.36;
@@ -322,7 +322,6 @@ img {
   background-image: url("assets/img/Rectangle_9_6.png");
   opacity: 1;
 }
-
 
 .experience {
   position: relative;
@@ -379,59 +378,6 @@ img {
   width: 495px;
 }
 
-.experience .section__title {
-  position: absolute;
-  top: 430px;
-  left: 20px;
-  width: 698px;
-  margin: 0;
-  color: var(--color-text-soft);
-  font-family: var(--font-accent);
-  font-size: 32px;
-  font-weight: 300;
-  line-height: 1.41;
-  text-transform: uppercase;
-}
-
-.experience .section__comment {
-  position: absolute;
-  top: 540px;
-  left: 20px;
-  width: 532px;
-  margin: 0;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.38;
-}
-
-.experience__figure {
-  position: absolute;
-  top: 430px;
-  left: 758px;
-  width: 442px;
-  margin: 0;
-}
-
-.experience__figure img {
-  width: 442px;
-  height: 295px;
-  border-radius: var(--radius-figure);
-  object-fit: cover;
-}
-
-.experience__figure-caption {
-  position: absolute;
-  top: 200px;
-  left: 110px;
-  width: 312px;
-  color: var(--color-text-soft);
-  font-family: var(--font-accent);
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1.05;
-  text-align: right;
-}
-
 .hero,
 .experience,
 .projects-section,
@@ -444,13 +390,6 @@ img {
 .contacts-section,
 .details-section {
   background: var(--color-bg-main);
-}
-
-.section__title {
-  color: var(--color-text-soft);
-  font-family: var(--font-accent);
-  font-weight: 300;
-  text-transform: uppercase;
 }
 
 .about-section {
@@ -477,48 +416,27 @@ img {
   column-gap: var(--projects-grid-gap-x);
 }
 
+.projects__card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 .projects__card img {
-  width: var(--projects-card-w);
+  width: 100%;
   height: var(--projects-card-h);
   object-fit: cover;
+  flex: 0 0 auto;
 }
 
 .projects__caption {
-  width: var(--projects-caption-width);
-  margin: 25px auto 0;
+  width: 100%;
+  margin: 18px 0 0;
   color: var(--color-text-main);
   font-size: var(--projects-caption-size);
   font-weight: 700;
   line-height: 1.24;
   text-align: center;
-}
-
-.projects__card--1 .projects__caption {
-  width: 377px;
-  margin-left: 1px;
-}
-
-.projects__card--2 .projects__caption {
-  width: 325px;
-}
-
-.projects__card--3 .projects__caption {
-  width: 317px;
-}
-
-.projects__card--4 .projects__caption {
-  width: 350px;
-  margin-top: 25px;
-}
-
-.projects__card--5 .projects__caption {
-  width: 295px;
-  margin-top: 24px;
-}
-
-.projects__card--6 .projects__caption {
-  width: 311px;
-  margin-top: 24px;
 }
 
 .projects-more {
@@ -553,52 +471,8 @@ img {
   row-gap: 82px;
 }
 
-.projects-section__grid--continuation .projects__caption {
-  margin-top: 18px;
-}
-
-.projects__card--more-1 .projects__caption {
-  width: 349px;
-}
-
-.projects__card--more-2 .projects__caption {
-  width: 289px;
-}
-
-.projects__card--more-3 .projects__caption {
-  width: 263px;
-}
-
-.projects__card--more-4 .projects__caption {
-  width: 369px;
-}
-
-.projects__card--more-5 .projects__caption {
-  width: 289px;
-}
-
-.projects__card--more-6 .projects__caption {
-  width: 206px;
-}
-
-.projects__card--more-7 .projects__caption {
-  width: 296px;
-}
-
-.projects__card--more-8 .projects__caption {
-  width: 236px;
-}
-
-.projects__card--more-9 .projects__caption {
-  width: 235px;
-}
-
 .projects__card--more-10 {
   grid-column: 2;
-}
-
-.projects__card--more-10 .projects__caption {
-  width: 226px;
 }
 
 .projects-summary {
@@ -946,10 +820,19 @@ body {
 }
 
 .about-section > .section__shell {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
   padding: 63px 20px 0;
+}
+
+.about-section__intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 442px;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.about-section__intro-copy {
+  min-width: 0;
 }
 
 .about-section .section__title {
@@ -961,10 +844,36 @@ body {
 
 .about-section .section__comment {
   max-width: 532px;
-  margin: -10px 0 0;
+  margin: 18px 0 0;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.38;
+}
+
+.about-section__intro-media {
+  position: relative;
+  margin: 0;
+  width: 442px;
+}
+
+.about-section__intro-media img {
+  width: 442px;
+  height: 295px;
+  border-radius: var(--radius-figure);
+  object-fit: cover;
+}
+
+.about-section__intro-caption {
+  position: absolute;
+  top: 200px;
+  left: 110px;
+  width: 312px;
+  color: var(--color-text-soft);
+  font-family: var(--font-accent);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.05;
+  text-align: right;
 }
 
 .projects-section > .section__shell {
@@ -1005,9 +914,19 @@ body {
 }
 
 .neuro-section > .section__shell {
-  position: relative;
-  min-height: 1171px;
   padding: 119px 20px 77px;
+}
+
+.neuro-section__intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 323px;
+  gap: 37px;
+  align-items: start;
+  margin-bottom: 72px;
+}
+
+.neuro-section__intro-copy {
+  min-width: 0;
 }
 
 .neuro-section .section__title {
@@ -1019,7 +938,8 @@ body {
 
 .neuro-section .section__comment {
   margin: 42px 0 0;
-  width: 1180px;
+  width: 100%;
+  max-width: 820px;
   font-size: 20px;
   line-height: 1.2;
 }
@@ -1135,8 +1055,6 @@ body {
   gap: 24px;
 }
 
-
-
 .section__media {
   position: absolute;
   overflow: hidden;
@@ -1152,14 +1070,6 @@ body {
 
 .section__media--neuro {
   position: absolute;
-}
-
-.section__media--neuro .neuro-section__image-icon {
-  position: absolute;
-  right: 25px;
-  bottom: 25px;
-  width: 64px;
-  height: 64px;
 }
 
 .section__final {
@@ -1204,7 +1114,6 @@ body {
   position: relative;
 }
 
-
 /* meta absolute layout */
 
 .meta-section > .section__shell {
@@ -1245,73 +1154,116 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.meta-section > .section__shell > .section__block:nth-of-type(1) {
-  top: 595px; left: 20px; width: 451px;
+
+.meta-section__blocks-grid {
+  display: grid;
+  grid-template-columns: 451px 390px 295px;
+  gap: 48px 20px;
+  align-items: start;
 }
 
-.meta-section > .section__shell > .section__block:nth-of-type(1) .section__block-body { min-height: 307px; }
-
-.meta-section > .section__shell > .section__block:nth-of-type(2) {
-  top: 987px; left: 20px; width: 451px;
+.meta-section__blocks-grid > .section__block {
+  position: relative;
 }
 
-.meta-section > .section__shell > .section__block:nth-of-type(2) .section__block-body { min-height: 183px; }
-
-.meta-section > .section__shell > .section__block:nth-of-type(3) {
-  top: 595px; left: 491px; width: 390px;
+.meta-section__blocks-grid > .section__block:nth-child(1) .section__block-body {
+  min-height: 307px;
 }
 
-.meta-section > .section__shell > .section__block:nth-of-type(3) .section__block-body { min-height: 250px; }
-
-.meta-section > .section__shell > .section__block:nth-of-type(4) {
-  top: 987px; left: 491px; width: 709px;
+.meta-section__blocks-grid > .section__block:nth-child(2) .section__block-body {
+  min-height: 250px;
 }
 
-.meta-section > .section__shell > .section__block:nth-of-type(4) .section__block-body { min-height: 183px; }
-
-.meta-section > .section__shell > .section__block:nth-of-type(5) {
-  top: 540px; left: 905px; width: 295px;
+.meta-section__blocks-grid > .section__block:nth-child(3) .section__block-body {
+  min-height: 254px;
 }
 
-.meta-section > .section__shell > .section__block:nth-of-type(5) .section__block-body { min-height: 254px; }
+.meta-section__blocks-grid > .section__block:nth-child(4) {
+  grid-column: 1;
+}
 
-/* neuro absolute layout */
+.meta-section__blocks-grid > .section__block:nth-child(4) .section__block-body {
+  min-height: 183px;
+}
+
+.meta-section__blocks-grid > .section__block:nth-child(5) {
+  grid-column: 2 / 4;
+}
+
+.meta-section__blocks-grid > .section__block:nth-child(5) .section__block-body {
+  min-height: 183px;
+}
+
+/* neuro layout */
 .neuro-section > .section__shell > .section__media--neuro {
-  top: 97px; right: 20px; width: 323px; height: 215px;
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 323px;
+  height: 215px;
 }
 
-.neuro-section > .section__shell > .section__block:nth-of-type(1) {
-  top: 419px; left: 20px; width: 461px;
+.neuro-section__blocks-grid {
+  display: grid;
+  grid-template-columns: 461px 410px 282px;
+  gap: 44px 16px;
+  align-items: start;
 }
 
-.neuro-section > .section__shell > .section__block:nth-of-type(1) .section__block-body { min-height: 177px; }
-
-.neuro-section > .section__shell > .section__block:nth-of-type(2) {
-  top: 419px; left: 497px; width: 703px;
+.neuro-section__blocks-grid > .section__block {
+  position: relative;
 }
 
-.neuro-section > .section__shell > .section__block:nth-of-type(2) .section__block-body { min-height: 177px; }
-
-.neuro-section > .section__shell > .section__block:nth-of-type(3) {
-  top: 714px; left: 20px; width: 461px;
+.neuro-section__blocks-grid > .section__block:nth-child(1) .section__block-body {
+  min-height: 177px;
 }
 
-.neuro-section > .section__shell > .section__block:nth-of-type(3) .section__block-body { min-height: 251px; }
-
-.neuro-section > .section__shell > .section__block:nth-of-type(4) {
-  top: 714px; left: 497px; width: 410px;
+.neuro-section__blocks-grid > .section__block:nth-child(2) {
+  grid-column: 2 / 4;
 }
 
-.neuro-section > .section__shell > .section__block:nth-of-type(4) .section__block-body { min-height: 252px; }
-
-.neuro-section > .section__shell > .section__block:nth-of-type(5) {
-  top: 714px; left: 919px; width: 282px;
+.neuro-section__blocks-grid > .section__block:nth-child(2) .section__block-body {
+  min-height: 177px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
 }
 
-.neuro-section > .section__shell > .section__block:nth-of-type(5) .section__block-body { min-height: 252px; }
+.neuro-section__blocks-grid > .section__block:nth-child(2) .section__block-text {
+  flex: 1 1 auto;
+}
+
+.neuro-section__code-image {
+  display: block;
+  width: 128px;
+  height: 128px;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  object-fit: contain;
+}
+
+.neuro-section__blocks-grid > .section__block:nth-child(3) .section__block-body {
+  min-height: 251px;
+}
+
+.neuro-section__blocks-grid > .section__block:nth-child(4) .section__block-body {
+  min-height: 252px;
+}
+
+.neuro-section__blocks-grid > .section__block:nth-child(5) {
+  grid-column: 3;
+}
+
+.neuro-section__blocks-grid > .section__block:nth-child(5) .section__block-body {
+  min-height: 252px;
+}
 
 .neuro-section > .section__shell > .section__final {
-  left: 153px; top: 1008px; width: 906px;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 906px;
+  margin: 42px auto 0;
 }
 
 /* lab absolute layout */
@@ -1396,9 +1348,6 @@ body {
   }
 }
 
-
-
-
 /* corrected item structure: grid for the list, flex for one row item */
 .section__item {
   min-height: 0;
@@ -1432,24 +1381,33 @@ body {
   text-align: left;
 }
 
+/* ===== DEBUG OVERLAY: GRID / FLEX ===== */
 
-
-/* ===== CLEAR DEBUG OVERLAY ===== */
 /* GRID containers */
 .hero__cards,
+.about-section__intro-layout,
 .about-section__grid,
 .projects-section__grid,
-.section__group {
+.section__group,
+.meta-section__intro-layout,
+.meta-section__blocks-grid,
+.neuro-section__intro-layout,
+.neuro-section__blocks-grid {
   outline: 3px solid #ff4d4f !important;
   outline-offset: 2px;
   position: relative;
 }
 
 .hero__cards::before,
+.about-section__intro-layout::before,
 .about-section__grid::before,
 .projects-section__grid::before,
-.section__group::before {
-  content: "GRID CONTAINER";
+.section__group::before,
+.meta-section__intro-layout::before,
+.meta-section__blocks-grid::before,
+.neuro-section__intro-layout::before,
+.neuro-section__blocks-grid::before {
+  content: "GRID";
   position: absolute;
   top: -20px;
   left: 0;
@@ -1462,18 +1420,28 @@ body {
 
 /* GRID items */
 .hero__cards > *,
+.about-section__intro-layout > *,
 .about-section__grid > *,
 .projects-section__grid > *,
-.section__group > * {
+.section__group > *,
+.meta-section__intro-layout > *,
+.meta-section__blocks-grid > *,
+.neuro-section__intro-layout > *,
+.neuro-section__blocks-grid > * {
   outline: 2px dashed #4da3ff !important;
   outline-offset: -2px;
   position: relative;
 }
 
 .hero__cards > *::after,
+.about-section__intro-layout > *::after,
 .about-section__grid > *::after,
 .projects-section__grid > *::after,
-.section__group > *::after {
+.section__group > *::after,
+.meta-section__intro-layout > *::after,
+.meta-section__blocks-grid > *::after,
+.neuro-section__intro-layout > *::after,
+.neuro-section__blocks-grid > *::after {
   content: "GRID ITEM";
   position: absolute;
   top: 0;
@@ -1489,9 +1457,11 @@ body {
 .top-menu__brand,
 .projects-more__shell,
 .footer-menu__brand,
-.section__item-row,
 .hero__card,
-.section__item-icon {
+.projects__card,
+.section__item-row,
+.section__item-icon,
+.neuro-section__blocks-grid > .section__block:nth-child(2) .section__block-body {
   outline: 3px solid #2fbf71 !important;
   outline-offset: 2px;
   position: relative;
@@ -1500,10 +1470,12 @@ body {
 .top-menu__brand::before,
 .projects-more__shell::before,
 .footer-menu__brand::before,
-.section__item-row::before,
 .hero__card::before,
-.section__item-icon::before {
-  content: "FLEX CONTAINER";
+.projects__card::before,
+.section__item-row::before,
+.section__item-icon::before,
+.neuro-section__blocks-grid > .section__block:nth-child(2) .section__block-body::before {
+  content: "FLEX";
   position: absolute;
   top: -20px;
   left: 0;
@@ -1514,13 +1486,15 @@ body {
   z-index: 9999;
 }
 
-/* FLEX children */
+/* FLEX items */
 .top-menu__brand > *,
 .projects-more__shell > *,
 .footer-menu__brand > *,
-.section__item-row > *,
 .hero__card > *,
-.section__item-icon > * {
+.projects__card > *,
+.section__item-row > *,
+.section__item-icon > *,
+.neuro-section__blocks-grid > .section__block:nth-child(2) .section__block-body > * {
   outline: 2px dashed #ffd84d !important;
   outline-offset: -2px;
   position: relative;
@@ -1529,9 +1503,11 @@ body {
 .top-menu__brand > *::after,
 .projects-more__shell > *::after,
 .footer-menu__brand > *::after,
-.section__item-row > *::after,
 .hero__card > *::after,
-.section__item-icon > *::after {
+.projects__card > *::after,
+.section__item-row > *::after,
+.section__item-icon > *::after,
+.neuro-section__blocks-grid > .section__block:nth-child(2) .section__block-body > *::after {
   content: "FLEX ITEM";
   position: absolute;
   bottom: 0;
@@ -1541,24 +1517,4 @@ body {
   color: #000;
   background: #ffd84d;
   z-index: 9998;
-}
-
-/* Explicitly mark things that are NOT grid/flex in meta-section */
-.meta-section > .section__shell > .section__block {
-  outline: 3px solid #b56cff !important;
-  outline-offset: 2px;
-  position: relative;
-}
-
-.meta-section .section__media::before,
-.meta-section .section__block::before {
-  content: "NOT GRID/FLEX";
-  position: absolute;
-  top: -20px;
-  left: 0;
-  padding: 3px 6px;
-  font: 700 12px/1 Arial, sans-serif;
-  color: #fff;
-  background: #b56cff;
-  z-index: 9999;
 }
