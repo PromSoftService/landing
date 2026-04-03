@@ -1,9 +1,12 @@
 :root {
   --color-bg-main: #212121;
   --color-bg-panel: #333333;
+  --color-bg-card: #141414;
   --color-overlay: rgba(0, 0, 0, 0.45);
   --color-text-main: #ffffff;
   --color-text-soft: #f5f5f5;
+  --color-border-card: #909090;
+  --color-border-accent: #cbb8a7;
   --color-burger-bg: rgba(144, 144, 144, 0.5);
 
   --font-base: Arial, sans-serif;
@@ -12,7 +15,25 @@
   --bp-mobile: 1199px;
 
   --shell-desktop: 1200px;
+  --shell-max: 1200px;
   --section-shell: 1200px;
+  --section-padding-x: 20px;
+  --section-padding-y: 56px;
+  --section-padding-x-mobile: 16px;
+
+  --grid-gap-sm: 18px;
+  --grid-gap-md: 24px;
+  --grid-gap-lg: 34px;
+  --grid-gap-xl: 48px;
+
+  --title-size-xl: 95px;
+  --title-size-lg: 32px;
+  --title-size-md: 24px;
+  --text-size-lg: 20px;
+  --text-size-md: 15px;
+  --text-size-sm: 13px;
+  --line-height-title: 1.2;
+  --line-height-text: 1.2;
 
   --header-height: 100px;
   --brand-logo-w: 134px;
@@ -47,11 +68,23 @@
   --radius-card: 10px;
   --radius-figure: 20px;
   --radius-pill: 30px;
+  --card-radius: 25px;
+  --card-border: 1px solid var(--color-border-card);
+  --card-bg: var(--color-bg-card);
+  --card-padding: 24px 30px 25px;
+  --card-gap: 24px;
 
   --content-left: 20px;
   --block-title-left: 30px;
   --block-body-bg: #141414;
   --block-border-color: #909090;
+
+  --nav-gap-x: 28px;
+  --nav-gap-y: 12px;
+  --nav-font-size: 12px;
+
+  --media-radius: 25px;
+  --media-object-fit: cover;
 }
 
 @font-face {
@@ -330,15 +363,19 @@ img {
 }
 
 .experience__shell {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: center;
+  align-items: start;
+  row-gap: 28px;
   width: min(100%, var(--section-shell));
   min-height: var(--stats-h-desktop);
   margin: 0 auto;
+  padding: 123px 83px 56px;
 }
 
 .experience__value {
-  position: absolute;
-  width: 340px;
+  width: 100%;
   margin: 0;
   font-family: var(--font-accent);
   font-size: 96px;
@@ -347,18 +384,8 @@ img {
   text-align: center;
 }
 
-.experience__value--left {
-  top: 123px;
-  left: 160px;
-}
-
-.experience__value--right {
-  top: 123px;
-  left: 700px;
-}
-
 .experience__caption {
-  position: absolute;
+  width: min(100%, 495px);
   margin: 0;
   font-size: 24px;
   font-weight: 700;
@@ -366,17 +393,6 @@ img {
   text-align: center;
 }
 
-.experience__caption--left {
-  top: 230px;
-  left: 83px;
-  width: 495px;
-}
-
-.experience__caption--right {
-  top: 230px;
-  left: 622px;
-  width: 495px;
-}
 
 .hero,
 .experience,
@@ -397,7 +413,6 @@ img {
 }
 
 .about-section__grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 48px 18px;
 }
 
@@ -408,7 +423,6 @@ img {
 
 .projects-section__grid {
   margin-top: 56px;
-  grid-template-columns: repeat(3, var(--projects-card-w));
   row-gap: var(--projects-grid-gap-y);
   column-gap: var(--projects-grid-gap-x);
 }
@@ -507,17 +521,11 @@ img {
 }
 
 .customers-section__grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 20px 18px;
 }
 
 .customers-section__logo-card {
   margin: 0;
-  min-height: 130px;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .customers-section__logo {
@@ -534,7 +542,6 @@ img {
 }
 
 .contacts-section__grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   max-width: 769px;
 }
@@ -751,11 +758,100 @@ body {
   color: var(--color-text-main);
 }
 
+.section__title--lg {
+  font-size: var(--title-size-lg);
+  line-height: 1.41;
+}
+
+.section__title--md {
+  font-size: var(--title-size-md);
+  line-height: var(--line-height-title);
+}
+
+.section__title--center {
+  text-align: center;
+}
+
+.section__title--narrow {
+  max-width: 723px;
+}
+
+.section__comment--wide {
+  max-width: 685px;
+}
+
+.section__comment--compact {
+  max-width: 532px;
+}
+
+.section__comment--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section__comment--lead {
+  font-size: var(--text-size-lg);
+  line-height: var(--line-height-text);
+}
+
+.section__intro-copy {
+  min-width: 0;
+}
+
 .section__intro-layout,
 .section__blocks-grid,
 .section__cards-grid {
   display: grid;
   align-items: start;
+}
+
+.section__intro-layout--text-media {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.section__intro-layout--media-text {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.section__intro-layout--balanced {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.section__intro-layout--media-sm {
+  gap: 24px;
+}
+
+.section__intro-layout--media-md {
+  gap: 32px 20px;
+}
+
+.section__intro-layout--media-lg {
+  gap: 24px 20px;
+}
+
+.section__blocks-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.section__blocks-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.section__blocks-grid--3-asymmetric {
+  grid-template-columns: 451px 390px 295px;
+}
+
+.section__cards-grid--projects {
+  grid-template-columns: repeat(3, var(--projects-card-w));
+}
+
+.section__cards-grid--logos {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.section__cards-grid--contacts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .experience .section__title {
@@ -789,19 +885,13 @@ body {
   margin-bottom: 28px;
 }
 
-.about-section__intro-copy {
-  min-width: 0;
-}
 
 .about-section .section__title {
   position: relative;
   margin: 0;
-  font-size: 24px;
-  line-height: 1.2;
 }
 
 .about-section .section__comment {
-  max-width: 532px;
   margin: 18px 0 0;
   font-size: 15px;
   font-weight: 500;
@@ -844,8 +934,6 @@ body {
 .customers-section .section__title,
 .contacts-section .section__title {
   margin: 0;
-  font-size: 24px;
-  line-height: 1.2;
 }
 
 .section__shell--continuation {
@@ -883,6 +971,57 @@ body {
   grid-column: span 2;
 }
 
+.section__block--compact .section__block-body {
+  min-height: 208px;
+}
+
+.section__block--accent .section__block-body {
+  min-height: 252px;
+}
+
+.section__block--media .section__block-body {
+  min-height: 254px;
+}
+
+.section__block--split .section__block-body {
+  min-height: 177px;
+}
+
+
+.section__block--feature .section__block-body {
+  min-height: 307px;
+}
+
+.section__block--case-study .section__block-body {
+  min-height: 250px;
+}
+
+.section__block--note .section__block-body {
+  min-height: 183px;
+}
+
+.section__block--explain .section__block-body {
+  min-height: 251px;
+}
+
+.section__block--benefits-panel .section__block-body {
+  min-height: 292px;
+}
+
+.section__block--center .section__block-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section__block--logo {
+  min-height: 130px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .section__block-title {
   margin: 0 0 12px;
   color: var(--color-text-soft);
@@ -896,10 +1035,10 @@ body {
 
 .section__block-body {
   min-height: 266px;
-  padding: 24px 30px 25px;
-  background: #141414;
-  border: 1px solid #909090;
-  border-radius: 25px;
+  padding: var(--card-padding);
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   box-sizing: border-box;
 }
 
@@ -936,14 +1075,14 @@ body {
 .section__media {
   position: relative;
   overflow: hidden;
-  border-radius: 25px;
+  border-radius: var(--media-radius);
   background: linear-gradient(50deg, #4f4f4f 0%, #000 100%);
 }
 
 .section__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: var(--media-object-fit);
 }
 
 .section__final {
@@ -1032,22 +1171,6 @@ body {
   gap: 48px 20px;
 }
 
-.meta-section__block--benefits .section__block-body {
-  min-height: 307px;
-}
-
-.meta-section__block--case .section__block-body {
-  min-height: 250px;
-}
-
-.meta-section__block--demo .section__block-body {
-  min-height: 254px;
-}
-
-.meta-section__block--how .section__block-body,
-.meta-section__block--why .section__block-body {
-  min-height: 183px;
-}
 
 /* neuro translated layout */
 .neuro-section > .section__shell {
@@ -1060,23 +1183,16 @@ body {
   margin-bottom: 72px;
 }
 
-.neuro-section__intro-copy {
-  min-width: 0;
-}
 
 .neuro-section .section__title {
   margin: 0;
   width: 840px;
-  font-size: 24px;
-  line-height: 1.2;
 }
 
 .neuro-section .section__comment {
   margin: 42px 0 0;
   width: 100%;
   max-width: 820px;
-  font-size: 20px;
-  line-height: 1.2;
 }
 
 .neuro-section > .section__shell > .section__media--neuro {
@@ -1089,19 +1205,6 @@ body {
   gap: 44px 16px;
 }
 
-.neuro-section__block--definition .section__block-body,
-.neuro-section__block--manual-code .section__block-body {
-  min-height: 177px;
-}
-
-.neuro-section__block--does .section__block-body {
-  min-height: 251px;
-}
-
-.neuro-section__block--ai .section__block-body,
-.neuro-section__block--result .section__block-body {
-  min-height: 252px;
-}
 
 .neuro-section__code-image {
   width: 128px;
@@ -1126,13 +1229,9 @@ body {
   margin-bottom: 42px;
 }
 
-.lab-section__intro-copy {
-  min-width: 0;
-}
 
 .lab-section .section__title {
   margin: 0;
-  font-size: 24px;
   line-height: 1.45;
 }
 
@@ -1140,8 +1239,6 @@ body {
   width: 100%;
   max-width: 748px;
   margin: 20px 0 0;
-  font-size: 20px;
-  line-height: 1.2;
 }
 
 .lab-section__intro-media {
@@ -1154,15 +1251,6 @@ body {
   gap: 34px 20px;
 }
 
-.lab-section__block--what .section__block-body,
-.lab-section__block--why .section__block-body,
-.lab-section__block--result .section__block-body {
-  min-height: 208px;
-}
-
-.lab-section__block--benefits .section__block-body {
-  min-height: 292px;
-}
 
 /* review translated layout */
 .review-section > .section__shell {
@@ -1176,22 +1264,14 @@ body {
   margin-bottom: 75px;
 }
 
-.review-section__intro-copy {
-  min-width: 0;
-}
 
 .review-section .section__title {
-  max-width: 723px;
   margin: 0;
-  font-size: 24px;
   line-height: 1.45;
 }
 
 .review-section .section__comment {
-  max-width: 685px;
   margin: 30px 0 0;
-  font-size: 20px;
-  line-height: 1.2;
 }
 
 .review-section__intro-media {
@@ -1204,13 +1284,6 @@ body {
   gap: 34px 20px;
 }
 
-.review-section__block--library .section__block-body,
-.review-section__block--digital-twin .section__block-body,
-.review-section__block--metaprogramming .section__block-body,
-.review-section__block--rating .section__block-body,
-.review-section__block--practice .section__block-body {
-  min-height: 208px;
-}
 
 .review-section__subheading {
   grid-column: 1 / -1;
@@ -1246,7 +1319,8 @@ body {
   .meta-section,
   .neuro-section,
   .lab-section,
-  .review-section {
+  .review-section,
+  .experience {
     min-height: auto;
   }
 
@@ -1277,7 +1351,13 @@ body {
   .lab-section__blocks-grid,
   .review-section__blocks-grid,
   .projects-section__grid,
-  .projects-section__grid--continuation {
+  .projects-section__grid--continuation,
+  .section__blocks-grid--2,
+  .section__blocks-grid--3,
+  .section__blocks-grid--3-asymmetric,
+  .section__cards-grid--projects,
+  .section__cards-grid--logos,
+  .section__cards-grid--contacts {
     grid-template-columns: 1fr;
     gap: 24px;
   }
@@ -1317,6 +1397,23 @@ body {
   .section__block-body {
     min-height: 0;
     padding: 20px;
+  }
+
+  .experience__shell {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+    min-height: auto;
+    padding: 56px 16px;
+  }
+
+  .experience__value {
+    font-size: 72px;
+  }
+
+  .experience__caption {
+    width: 100%;
+    max-width: 495px;
+    font-size: 22px;
   }
 
   .section__block-body--split {
